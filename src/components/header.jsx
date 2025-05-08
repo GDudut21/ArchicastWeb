@@ -53,22 +53,7 @@ export const Header = () => {
   }, []);
 
   // ✅ Render
-  return (
-    <header
-      id="header"
-      style={{
-        backgroundImage: `url("/img/Archicastbgm.jpg")`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        height: "100vh",
-        color: "#fff",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center"
-      }}
-    >
+  return ( 
       <div className="intro">
         <div className="intro-text">
           <h1 className="brand-title">
@@ -80,6 +65,5 @@ export const Header = () => {
           </div>
         </div>
       </div>
-    </header>
   );
 };
