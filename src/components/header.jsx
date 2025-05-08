@@ -52,9 +52,37 @@ export const Header = () => {
     return () => clearTimeout(initialDelay);
   }, []);
 
-  // ✅ Render
-  return ( 
-      <div className="intro">
+  return (
+    <header id="header" style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
+      {/* ✅ Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="video-background"
+      >
+        <source src="/img/Archicastbg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {/* ✅ Overlay */}
+      <div className="video-overlay"></div>
+      
+      {/* ✅ Foreground Content */}
+      <div
+        className="intro"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          color: "#fff"
+        }}
+      >
         <div className="intro-text">
           <h1 className="brand-title">
             <span className="archi">ARCHI</span>
@@ -65,5 +93,6 @@ export const Header = () => {
           </div>
         </div>
       </div>
+    </header>
   );
 };

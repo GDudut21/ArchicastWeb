@@ -220,18 +220,8 @@ a:focus,
   font-weight: 800;
   color: #5ca9fb;
 }
-/* Header Section */
-.intro {
-  display: table;
-  width: 100%;
-  padding: 0;
-  background: url(../img/intro-bg.jpg) center center no-repeat;
-  background-color: #e5e5e5;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-}
+
+
 .intro p {
   color: #fff;
   font-size: 22px;
