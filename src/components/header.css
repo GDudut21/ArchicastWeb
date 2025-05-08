@@ -1,0 +1,79 @@
+.intro-text h1 {
+    font-size: 100px;
+    font-weight: bold;
+  }
+  
+  .intro-text .archi {
+    color: #004299; /* light blue */
+  }
+  
+  .intro-text .cast {
+    color: #9b9292; /* gray */
+  }
+  
+  .archi {
+    color: #007BFF; /* Light blue */
+  }
+  
+  .cast {
+    color: #777777; /* Gray */
+  }
+  
+  .intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .typewriter-container {
+    font-size: 22px;
+    font-weight: 500;
+    color: #000e8e;
+    border-right: 2px solid #444;
+    padding-right: 5px;
+    animation: blink-caret 0.7s step-end infinite;
+    height: 24px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #444; }
+  }
+
+  .brand-title {
+    display: inline-block;
+  }
+  
+  /* Shared keyframe */
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ARCHI appears first */
+  .archi {
+    color: #007BFF;
+    opacity: 0;
+    animation: fadeSlideIn 1.2s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+  
+  /* CAST appears second */
+  .cast {
+    color: #777777;
+    opacity: 0;
+    animation: fadeSlideIn 1.2s ease-out forwards;
+    animation-delay: 1s;
+  }
+  
