@@ -52,16 +52,29 @@ export const Header = () => {
     return () => clearTimeout(initialDelay);
   }, []);
 
+  // ✅ Render
   return (
-    <header id="header">
-      {/* ✅ Foreground Content */}
+    <header
+      id="header"
+      style={{
+        backgroundImage: `url("/img/Archicastbgm.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        height: "100vh",
+        color: "#fff",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center"
+      }}
+    >
       <div className="intro">
         <div className="intro-text">
           <h1 className="brand-title">
             <span className="archi">ARCHI</span>
             <span className="cast">CAST</span>
           </h1>
-
           <div className="typewriter-container">
             <span>{displayedText}</span>
           </div>
