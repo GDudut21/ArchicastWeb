@@ -1,5 +1,3 @@
-/* Updated Services CSS with staggered fade + slide-in animation */
-
 .services-section {
   padding: 80px 0;
   background: linear-gradient(to right, #4facfe, #00f2fe);
@@ -55,7 +53,10 @@
   align-items: center;
   position: relative;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(60px);
+}
+
+.service-card.reveal {
   animation: fadeSlideUp 1s ease forwards;
   animation-delay: calc(0.3s * var(--i));
 }
@@ -72,11 +73,6 @@
   margin-right: 0;
 }
 
-.service-card.reveal {
-  animation-play-state: running;
-}
-
-/* Fade + slide-up keyframes */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
@@ -137,5 +133,22 @@
 
   .service-content p {
     font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .section-header.services-title h2 {
+    font-size: 36px;
+  }
+
+  .service-card {
+    height: auto;
+  }
+
+  .service-content h3 {
+    font-size: 20px;
+  }
+
+  .service-content p {
+    font-size: 14px;
   }
 }

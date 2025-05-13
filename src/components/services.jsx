@@ -3,23 +3,22 @@ import "./services.css";
 
 export const Services = () => {
   const titleRef = useRef(null);
-  const containerRef = useRef(null);
 
   useEffect(() => {
+    const elements = document.querySelectorAll(".service-card, .section-header.services-title");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("reveal");
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });
 
-    if (containerRef.current) observer.observe(containerRef.current);
-    if (titleRef.current) observer.observe(titleRef.current);
+    elements.forEach((el) => observer.observe(el));
 
     return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-      if (titleRef.current) observer.unobserve(titleRef.current);
+      elements.forEach((el) => observer.unobserve(el));
     };
   }, []);
 
@@ -29,8 +28,8 @@ export const Services = () => {
         <h2>SERVICES</h2>
         <hr />
       </div>
-      <div className="services-container" ref={containerRef}>
-        <div className="service-card left-align" style={{ backgroundImage: "url(/img/Service2.jpg)" }}>
+      <div className="services-container">
+        <div className="service-card left-align" style={{ backgroundImage: "url(/img/Service2.jpg)", "--i": 0 }}>
           <div className="overlay" />
           <div className="service-content">
             <h3>Modular Office Units</h3>
@@ -41,7 +40,7 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="service-card right-align" style={{ backgroundImage: "url(/img/Service3.jpg)" }}>
+        <div className="service-card right-align" style={{ backgroundImage: "url(/img/Service3.jpg)", "--i": 1 }}>
           <div className="overlay" />
           <div className="service-content">
             <h3>Precast Panel Production</h3>
@@ -52,7 +51,7 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="service-card left-align" style={{ backgroundImage: "url(/img/service4.jpg)" }}>
+        <div className="service-card left-align" style={{ backgroundImage: "url(/img/service4.jpg)", "--i": 2 }}>
           <div className="overlay" />
           <div className="service-content">
             <h3>Reinforcement Steel Fabrication</h3>
@@ -63,7 +62,7 @@ export const Services = () => {
           </div>
         </div>
 
-        <div className="service-card right-align" style={{ backgroundImage: "url(/img/Service.jpg)" }}>
+        <div className="service-card right-align" style={{ backgroundImage: "url(/img/Service.jpg)", "--i": 3 }}>
           <div className="overlay" />
           <div className="service-content">
             <h3>Batching & Silo Plant Installation</h3>
