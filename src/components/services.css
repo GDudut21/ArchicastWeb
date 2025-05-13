@@ -1,126 +1,127 @@
 .services-section {
-    padding: 80px 0;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    display: flex;
+  padding: 80px 0;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  overflow: hidden;
+}
+
+.section-header.services-title {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-header.services-title.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header.services-title h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.section-header.services-title hr {
+  width: 70px;
+  height: 4px;
+  background-color: #fff;
+  border: none;
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.services-container.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card {
+  width: 90vw;
+  max-width: 1600px;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.service-card.left-align {
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.service-card.right-align {
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.service-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 60px;
+  max-width: 700px;
+  color: white;
+}
+
+.service-content h3 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.service-content p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-card {
     flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+    height: auto;
+    width: 100%;
   }
-  
-  .section-header.services-title {
-    text-align: center;
-    margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .section-header.services-title.reveal {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .section-header.services-title h2 {
-    font-size: 40px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 10px;
-  }
-  
-  .section-header.services-title hr {
-    width: 60px;
-    height: 4px;
-    border: none;
-    border-radius: 2px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+
+  .service-card.left-align,
+  .service-card.right-align {
     margin: 0 auto;
   }
-  
-  .services-container {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: nowrap;
-    max-width: 1400px;
-    padding: 0 20px;
-    opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .services-container.reveal {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  .service-card {
-    flex: 0 0 auto;
-    width: 300px;
-    height: 320px;
-    perspective: 1200px;
-    cursor: pointer;
-  }
-  
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
-    transform-origin: center;
-  }
-  
-  .card-inner.flipped {
-    transform: rotateY(180deg) rotateX(10deg);
-  }
-  
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-    backface-visibility: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-front {
-    background: #fff;
-  }
-  
-  .card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .card-title-overlay {
-    position: absolute;
-    bottom: -100px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
+
+  .service-content {
+    padding: 30px;
     text-align: center;
-    padding: 10px;
-    transition: bottom 0.9s ease-in-out;
   }
-  
-  .card-front:hover .card-title-overlay {
-    bottom: 0;
+
+  .service-content h3 {
+    font-size: 24px;
   }
-  
-  .card-back {
-    background: #1e1e1e;
-    color: #fff;
-    transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 15px;
-    line-height: 1.4;
+
+  .service-content p {
+    font-size: 16px;
   }
-  
+}

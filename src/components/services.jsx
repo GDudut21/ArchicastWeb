@@ -1,64 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
-import './services.css';
+import React, { useEffect, useRef } from "react";
+import "./services.css";
 
 export const Services = () => {
-  const [flippedIndex, setFlippedIndex] = useState(null);
-  const containerRef = useRef(null);
   const titleRef = useRef(null);
-
-  const services = [
-    {
-      img: "/img/Service2.jpg",
-      title: "Modular Office Units",
-      desc: "Engineered for rapid deployment and cost-efficiency, our modular buildings provide durable, scalable solutions ideal for site offices, staff housing, or temporary facilities."
-    },
-    {
-      img: "/img/Service3.jpg",
-      title: "Precast Panel Production",
-      desc: "We manufacture precision-cast concrete panels using advanced technology for faster construction timelines, improved quality control, and sustainable site practices."
-    },
-    {
-      img: "/img/service4.jpg",
-      title: "Reinforcement Steel Fabrication",
-      desc: "Our skilled workforce and rebar processing systems ensure accuracy and safety in every cage and frame we fabricate—supporting stronger foundations and reliable concrete structures."
-    },
-    {
-      img: "/img/Service.jpg",
-      title: "Batching & Silo Plant Installation",
-      desc: "From assembly to integration, we build silo towers and batching stations optimized for volume, stability, and automation—backing continuous production for any scale of construction."
-    },
-  ];
-
-  const handleFlip = (index) => {
-    setFlippedIndex(index === flippedIndex ? null : index);
-  };
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("reveal");
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal");
+        }
+      });
+    }, { threshold: 0.2 });
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-    if (titleRef.current) {
-      observer.observe(titleRef.current);
-    }
+    if (containerRef.current) observer.observe(containerRef.current);
+    if (titleRef.current) observer.observe(titleRef.current);
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-      if (titleRef.current) {
-        observer.unobserve(titleRef.current);
-      }
+      if (containerRef.current) observer.unobserve(containerRef.current);
+      if (titleRef.current) observer.unobserve(titleRef.current);
     };
   }, []);
 
@@ -69,21 +30,49 @@ export const Services = () => {
         <hr />
       </div>
       <div className="services-container" ref={containerRef}>
-        {services.map((service, index) => (
-          <div key={index} className="service-card" onClick={() => handleFlip(index)}>
-            <div className={`card-inner ${flippedIndex === index ? 'flipped' : ''}`}>
-              <div className="card-front">
-                <img src={service.img} alt={service.title} />
-                <div className="card-title-overlay">
-                  <h3>{service.title}</h3>
-                </div>
-              </div>
-              <div className="card-back">
-                <p>{service.desc}</p>
-              </div>
-            </div>
+        <div className="service-card left-align" style={{ backgroundImage: "url(/img/Service2.jpg)" }}>
+          <div className="overlay" />
+          <div className="service-content">
+            <h3>Modular Office Units</h3>
+            <p>
+              Engineered for rapid deployment and cost-efficiency, our modular buildings provide durable,
+              scalable solutions ideal for site offices, staff housing, or temporary facilities.
+            </p>
           </div>
-        ))}
+        </div>
+
+        <div className="service-card right-align" style={{ backgroundImage: "url(/img/Service3.jpg)" }}>
+          <div className="overlay" />
+          <div className="service-content">
+            <h3>Precast Panel Production</h3>
+            <p>
+              We manufacture precision-cast concrete panels using advanced technology for faster construction
+              timelines, improved quality control, and sustainable site practices.
+            </p>
+          </div>
+        </div>
+
+        <div className="service-card left-align" style={{ backgroundImage: "url(/img/service4.jpg)" }}>
+          <div className="overlay" />
+          <div className="service-content">
+            <h3>Reinforcement Steel Fabrication</h3>
+            <p>
+              Our skilled workforce and rebar processing systems ensure accuracy and safety in every cage and
+              frame we fabricate—supporting stronger foundations and reliable concrete structures.
+            </p>
+          </div>
+        </div>
+
+        <div className="service-card right-align" style={{ backgroundImage: "url(/img/Service.jpg)" }}>
+          <div className="overlay" />
+          <div className="service-content">
+            <h3>Batching & Silo Plant Installation</h3>
+            <p>
+              From assembly to integration, we build silo towers and batching stations optimized for volume,
+              stability, and automation—backing continuous production for any scale of construction.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
