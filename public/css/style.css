@@ -287,13 +287,7 @@ header .intro-text {
   font-weight: 300;
   padding-right: 8px;
 }
-#about img {
-  width: 520px;
-  margin-top: 10px;
-  background: #fff;
-  border-right: 0;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.06);
-}
+
 #about p {
   line-height: 24px;
   margin: 30px 0;
@@ -301,7 +295,7 @@ header .intro-text {
 /* Services Section */
 #services {
   padding: 100px 0;
-  background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+  background: linear-gradient(to right, #595ee6 0%, #123963 100%);
   color: #fff;
 }
 #services .service-desc {
