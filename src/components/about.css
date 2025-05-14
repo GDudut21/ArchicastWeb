@@ -1,4 +1,6 @@
-/* General Styles */
+/* src/components/about.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@300&display=swap');
+
 #about {
   padding: 60px 0;
   background-color: #f9f9f9;
@@ -12,84 +14,74 @@
 .row {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-h2 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Left Vision Section */
-.vision-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-}
-
-.vision-container h2 {
-  font-size: 2rem;
-  color: #007bff;
-}
-
-.vision-container p {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-/* Right Mission Section */
-.mission-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-}
-
-.mission-container h2 {
-  font-size: 2rem;
-  color: #007bff;
-}
-
-.mission-container p {
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.logo-container {
+/* Title Header Style - Vision/Mission */
+.custom-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 6rem;           /* Large title font */
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.logo {
-  max-width: 100%;
-  height: auto;
-  width: 150px;  /* Set the logo size */
-  object-fit: contain;
+.archi {
+  font-family: "Poppins", sans-serif;
+  color: #1f5896; /* Blue for ARCHI */
+  font-weight: 700;
 }
 
-/* Responsive Styles */
+.cast {
+  font-family: "Roboto", sans-serif;
+  color: #888; /* Gray for CAST */
+  font-weight: 300;
+}
+
+/* Vision & Mission Cards */
+.vision-container,
+.mission-container {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  flex: 0 0 48%;
+  margin-bottom: 30px;
+}
+
+.vision-container h2,
+.mission-container h2 {
+  font-size: 4rem;   /* Ensure h2 is large enough */
+  font-weight: 700;
+}
+
+.vision-container p,
+.mission-container p {
+  font-size: 1.25rem;
+  color: #555;
+}
+
+
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .logo {
-    width: 120px;  /* Adjust logo size for smaller screens */
-  }
-
-  .row {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .vision-container,
   .mission-container {
-    width: 100%;
-    padding: 15px;
+    flex: 0 0 100%;
+  }
+
+  .vision-container h2,
+  .mission-container h2 {
+    font-size: 2.5rem;
+  }
+
+  .vision-container::before,
+  .mission-container::before {
+    width: 200px;
+    height: 200px;
   }
 }
