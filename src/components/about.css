@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300&display=swap');
 
-/* ====== Section & Container ====== */
+/* ====== GLOBAL LAYOUT ====== */
 #about {
   padding: 120px 0 80px;
   background-color: #f7f8fa;
@@ -10,67 +10,94 @@
   margin: 0 auto;
 }
 
-/* ====== Titles ====== */
-.custom-title {
+/* ====== PRECAST CARD ====== */
+.precast-card {
+  position: relative;
+  border: 2px solid #000;
+  background: #fff;
+  overflow: visible;      /* allow background-logo to show */
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 4rem auto;
+  max-width: 800px;
+}
+
+/* ArchiCast wordmark as a faint background */
+.precast-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/image/archicastlogo.svg") no-repeat center center;
+  background-size: 70%;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Title */
+.card-title {
+  position: relative;
+  z-index: 3;
   font-family: "Montserrat", sans-serif;
-  font-size: 7rem;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* House icon behind text */
+.card-bg-logo {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  opacity: 0.1;
+  z-index: 2;
+}
+
+/* Copy */
+.precast-card p {
+  position: relative;
+  z-index: 3;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* ====== WHY PRECAST? TABS ====== */
+.custom-title.why-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 4rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin: 0.5rem 0;
+  margin: 2rem 0 1rem;
 }
 .header-line {
   width: 80px;
   height: 4px;
   background-color: #1f5896;
-  margin: 0.5rem auto 2rem;
+  margin: 0 auto 2rem;
   border-radius: 2px;
 }
-
-/* ====== Precast Header Card ====== */
-.precast-header-card {
-  background: #fff;
-  padding: 2.5rem 2rem;
-  border-radius: 8px;
-  max-width: 900px;
-  margin: 3rem auto;
-  text-align: center;
-}
-.precast-header-card h2.custom-title {
-  font-size: 5rem;
-}
-.precast-header-card p {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  color: #555;
-  max-width: 800px;
-  margin: 1.5rem auto 0;
-  line-height: 1.6;
-}
-
-/* ====== WHY PRECAST? Tab Navigation ====== */
 .precast-nav {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 3rem;
   padding: 0;
-  margin: 2rem 0 4rem;
+  margin: 0 0 4rem;
 }
 .precast-nav .nav-item {
   font-family: "Montserrat", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #1f5896;
   cursor: pointer;
   position: relative;
   padding-bottom: 0.5rem;
   transition: color 0.2s;
-}
-.precast-nav .nav-item:hover {
-  color: #124a86;
 }
 .precast-nav .nav-item::after {
   content: "";
@@ -82,87 +109,83 @@
   background-color: #1f5896;
   transition: width 0.3s ease;
 }
+.precast-nav .nav-item:hover,
+.precast-nav .nav-item.active {
+  color: #124a86;
+}
 .precast-nav .nav-item:hover::after,
 .precast-nav .nav-item.active::after {
   width: 100%;
 }
 
-/* ====== Modal Overlay ====== */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
+/* ====== VISION & MISSION ====== */
+.vm-row {
   display: flex;
-  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
   justify-content: center;
-  z-index: 100;
+  margin: 4rem auto;
 }
-.modal {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-}
-.modal h3 {
-  font-family: "Montserrat", sans-serif;
-  margin-bottom: 1rem;
-}
-.modal p {
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 1.5rem;
-}
-.modal-close {
-  background: #1f5896;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.modal-close:hover {
-  background: #124a86;
-}
-
-/* ====== Stack Vision & Mission Vertically ====== */
 .vision-container,
 .mission-container {
+  position: relative;
+  flex: 1 1 40%;
+  min-width: 280px;
+  border: 2px solid #000;
   background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-  width: 100%;
-  margin: 2rem 0;
+  overflow: hidden;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
 }
-.vision-container h2,
-.mission-container h2 {
-  font-size: 4.5rem;
+.vm-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 3;
+}
+.vm-bg-logo {
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  width: 30%;
+  opacity: 0.1;
+  z-index: 1;
 }
 .vision-container p,
 .mission-container p {
-  font-size: 1.5rem;
-  color: #555;
-  line-height: 1.6;
+  position: relative;
+  z-index: 3;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.vm-watermark {
+  position: absolute;
+  bottom: -1rem;
+  right: 1rem;
+  width: 50%;
+  opacity: 0.03;
+  z-index: 1;
 }
 
-/* ====== Responsive Adjustments ====== */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  .custom-title { font-size: 5rem; }
-  .precast-header-card h2.custom-title { font-size: 4rem; }
-  .vision-container h2,
-  .mission-container h2 { font-size: 3rem; }
+  .card-title { font-size: 2rem; }
+  .precast-card p { font-size: 1rem; }
+  .card-bg-logo { width: 50%; }
 
-  .precast-nav .nav-item { font-size: 2rem; }
+  .custom-title.why-title { font-size: 3rem; }
+  .precast-nav .nav-item { font-size: 1.75rem; }
+
+  .vm-title { font-size: 2rem; }
 }
 @media (max-width: 480px) {
-  .custom-title { font-size: 4rem; }
-  .precast-header-card h2.custom-title { font-size: 3rem; }
-  .vision-container h2,
-  .mission-container h2 { font-size: 2.5rem; }
+  .card-title { font-size: 1.75rem; }
+  .precast-card p { font-size: 0.95rem; }
+  .card-bg-logo { width: 60%; }
 
+  .custom-title.why-title { font-size: 2.5rem; }
   .precast-nav .nav-item { font-size: 1.5rem; }
+  .vm-title { font-size: 1.5rem; }
 }
