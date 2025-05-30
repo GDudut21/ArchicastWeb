@@ -1,3 +1,4 @@
+// src/components/About.jsx
 import React, { useState } from "react";
 import "./about.css";
 
@@ -23,24 +24,23 @@ export const About = () => {
     <section id="about">
       {/* ─── PRECAST CARD ────────────────────────────────────────────── */}
       <div className="precast-card">
-        <h2 className="card-title">PRECAST CONCRETE</h2>
+        <h2 className="card-title">
+          <span className="archi">PRECAST</span>
+          <span className="cast">CONCRETE</span>
+        </h2>
+
         <img
           src="/img/precast-house.svg"
           alt=""
           className="card-bg-logo"
           aria-hidden="true"
         />
+
         <p>
           A construction product produced by pouring concrete in a reusable
           mold which is then cured in a controlled environment, transported to
           the construction site and lifted into place.
         </p>
-        <img
-          src="/img/archicast-wordmark.svg"
-          alt=""
-          className="card-watermark"
-          aria-hidden="true"
-        />
       </div>
 
       {/* ─── WHY PRECAST? TABS ───────────────────────────────────────── */}
@@ -76,12 +76,6 @@ export const About = () => {
             aria-hidden="true"
           />
           <p>{visionText}</p>
-          <img
-            src="/img/archicast-wordmark.svg"
-            alt=""
-            className="vm-watermark"
-            aria-hidden="true"
-          />
         </div>
         <div className="mission-container">
           <h2 className="vm-title">MISSION</h2>
@@ -92,12 +86,6 @@ export const About = () => {
             aria-hidden="true"
           />
           <p>{missionText}</p>
-          <img
-            src="/img/archicast-wordmark.svg"
-            alt=""
-            className="vm-watermark"
-            aria-hidden="true"
-          />
         </div>
       </div>
     </section>
