@@ -10,67 +10,56 @@
   margin: 0 auto;
 }
 
-/* ====== PRECAST CARD ====== */
-/* ====== PRECAST CARD Copy (new font) ====== */
-.precast-card p {
-  position: relative;
-  z-index: 2;
-  font-family: "Montserrat", sans-serif;  /* ← swapped in Montserrat */
-  font-weight: 400;                       /* ← normal weight */
-  font-size: 1.5rem;                      /* your enlarged size */
-  line-height: 1.6;
-  margin: 0 auto 1.5rem;
-  max-width: 700px;
-  text-align: center;
+/* ====== PRECAST CARD (square, flush left, no border) ====== */
+.container > .precast-card {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 1 / 1;     /* make it a perfect square */
+  background: #fff;
+  overflow: hidden;
+  margin: 0;               /* hugs the left edge of .container */
 }
 
-.precast-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-}
-
-/* Header styled like your ARCHICAST logo, bigger + bolder */
-.card-title {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
+/* — Text half — */
+.precast-card .precast-info {
+  flex: 1;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.card-title {
   font-family: "Montserrat", sans-serif;
-  font-weight: 900;           /* extra-bold */
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  letter-spacing: 6px;        /* a bit more spacing */
-  font-size: 4rem;            /* larger */
-  margin-bottom: 2.5rem;      /* more breathing room */
+  margin-bottom: 1rem;
 }
-.card-title .archi {
-  color: #0E3BBC;   /* logo-blue */
-}
-.card-title .cast {
-  color: #A8A8A8;   /* logo-gray */
-  margin-left: 0.5rem;
-}
-
-/* House icon behind text */
-.card-bg-logo {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40%;
-  opacity: 0.1;
-  z-index: 1;
-}
-
-/* Centered, slightly larger copy */
-.precast-card p {
-  position: relative;
-  z-index: 2;
+.card-title .archi { color: #0E3BBC; }
+.card-title .cast  { color: #A8A8A8; margin-left: 0.5rem; }
+.card-text {
   font-family: "Roboto", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.6;
-  margin: 0 auto 1.5rem;
-  max-width: 700px;
+  color: #555;
+}
+
+/* — Image half, left edge rounded into a half-circle — */
+.precast-card .precast-image {
+  flex: 1;
+  position: relative;
+}
+.precast-card .precast-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* round only the left side into a half-circle */
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* ====== WHY PRECAST? TABS ====== */
@@ -112,10 +101,8 @@
 .precast-nav .nav-item::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
+  bottom: 0; left: 0;
+  width: 0; height: 3px;
   background-color: #1f5896;
   transition: width 0.3s ease;
 }
@@ -142,6 +129,7 @@
   flex: 1 1 40%;
   min-width: 280px;
   border: 2px solid #000;
+  border-radius: 0;       /* square corners to match Precast */
   background: #fff;
   overflow: hidden;
   padding: 3rem 2rem 2rem;
@@ -157,38 +145,43 @@
 }
 .vm-bg-logo {
   position: absolute;
-  top: 3rem;
-  right: 1rem;
+  top: 3rem; right: 1rem;
   width: 30%;
   opacity: 0.1;
   z-index: 1;
 }
 .vision-container p,
 .mission-container p {
-  position: relative;
-  z-index: 2;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
+  color: #555;
 }
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  .card-title { font-size: 3rem; letter-spacing: 4px; }
-  .precast-card p { font-size: 1.1rem; }
-  .card-bg-logo { width: 50%; }
-
+  .container > .precast-card {
+    flex-direction: column;
+    aspect-ratio: auto;     /* allow height to grow */
+  }
+  .precast-image img {
+    border-radius: 0;       /* square at small sizes */
+    width: 100%;
+    height: 200px;
+  }
+  .card-title { font-size: 2.5rem; letter-spacing: 3px; }
+  .card-text  { font-size: 1.1rem; }
   .custom-title.why-title { font-size: 3rem; }
-  .precast-nav .nav-item { font-size: 1.75rem; }
-
-  .vm-title { font-size: 2rem; }
+  .precast-nav .nav-item   { font-size: 1.75rem; }
+  .vm-title                { font-size: 2rem; }
 }
 @media (max-width: 480px) {
-  .card-title { font-size: 2.5rem; letter-spacing: 3px; }
-  .precast-card p { font-size: 1rem; }
-  .card-bg-logo { width: 60%; }
-
+  .precast-image img {
+    height: 150px;
+  }
+  .card-title { font-size: 2rem; letter-spacing: 2px; }
+  .card-text  { font-size: 1rem; }
   .custom-title.why-title { font-size: 2.5rem; }
-  .precast-nav .nav-item { font-size: 1.5rem; }
-  .vm-title { font-size: 1.5rem; }
+  .precast-nav .nav-item   { font-size: 1.5rem; }
+  .vm-title                { font-size: 1.5rem; }
 }
